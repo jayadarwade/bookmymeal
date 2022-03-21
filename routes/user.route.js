@@ -42,6 +42,6 @@ router.post("/updateprofile",userController.updateprofile);
 
 router.post("/order",orderController.order);
 
-router.get("/orderhistry",orderController.orderhistory);
+router.get("/orderhistory/:id",orderController.orderhistory);
 
 module.exports=router;

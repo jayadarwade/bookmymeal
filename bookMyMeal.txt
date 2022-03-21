@@ -13,7 +13,7 @@ post-->http://localhost:3000/api/admin/addcategory
 
 
 //USER//
-post-->
+post-->https://bookmymealjaya.herokuapp.com/api/user/signup
 
 get-->
 

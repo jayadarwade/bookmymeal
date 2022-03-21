@@ -4,6 +4,7 @@ const adminController = require('../controller/admin.controller');
 const categoryController = require("../controller/category.controller");
 const userController=require('../controller/user.controller');
 const foodPackages = require("../controller/foodPackage.controller");
+const orderController = require("../controller/order.controller")
 const {body }= require('express-validator')
 const multer = require("multer");
 var Storage = multer.diskStorage({
@@ -52,5 +53,7 @@ router.post("/updatefoodpackage", upload.single('foodimage'),
 router.get("/viewusers",userController.viewusers);
 
 router.post("/updateprofile",adminController.updateprofile);
+
+router.get("/orderhistry",orderController.allorderhistory);
 
 module.exports = router;

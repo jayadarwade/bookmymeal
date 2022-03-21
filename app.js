@@ -8,7 +8,7 @@ mongoose.connect(
   "mongodb+srv://root:root@cluster0.8em2i.mongodb.net/BookMyMeal?retryWrites=true&w=majority"
 );
 
-const port = process.env.PORT || 5555
+const port = process.env.PORT || 5555;
 
 const bodyParser = require("body-parser");
 app.use(express.static(path.join(__dirname, "public")));
