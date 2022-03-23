@@ -14,7 +14,7 @@ exports.addtofavourate= async (request,response)=>{
     if(!favourate)
     favourate=new Favourate({userId:request.body.userId});
 
-      favourate.foodList.push(request.body.packageId)
+      favourate.foodList.push(request.body.productId)
       favourate.save()
     .then(results=>{
        console.log(results);

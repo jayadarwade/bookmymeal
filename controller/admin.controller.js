@@ -1,6 +1,5 @@
 const Admin = require("../model/admin.model");
 const { validationResult } = require("express-validator");
-const { response } = require("express");
 
 exports.signup = (request, response) => {
   const errors = validationResult(request);
@@ -45,8 +44,8 @@ exports.signin = (request, response) => {
 };
 
 exports.updateprofile = (request, response) => {
-  Priest.updateOne(
-    { _id: request.body.id },
+  Admin.updateOne(
+    { _id: request.params.id },
     {
       $set: {
         email: request.body.email,

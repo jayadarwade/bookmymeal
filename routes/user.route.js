@@ -1,12 +1,9 @@
 const express  = require('express');
-const { response, request } = require('express');
 const userController=require('../controller/user.controller');
 const cartController=require("../controller/cart.controller");
 const foodPackages=require("../controller/foodPackage.controller");
 const favourateController=require("../controller/favourate.controller");
-const category=require("../controller/category.controller");
 const orderController=require("../controller/order.controller")
-const { route } = require('./admin.route');
 const {body} =require('express-validator');
 
 const router = express.Router();
@@ -26,8 +23,8 @@ router.post("/signin"
 
 router.post("/addtocart",cartController.addToCart);
 router.get("/viewcart/:id",cartController.viewcartone);
-router.delete("/deletecart/:id/:packageId",cartController.deleteOneProduct);
-// router.get("/viewcartone/:id",cartController.viewcartone);
+router.delete("/deleteproductfromcart/:id/:packageId",cartController.deleteOneProduct);
+router.delete("/deletecart/:id",cartController.deletecart);
 
 router.post("/addtofavourate",favourateController.addtofavourate);
 router.get("/viewfavourate/:id",favourateController.viewfavourateone);

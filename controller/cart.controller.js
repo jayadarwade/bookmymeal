@@ -83,3 +83,24 @@ exports.deleteOneProduct = (request, response) => {
       return response.status(500).json({ message: "something went wrong" });
     });
 };
+
+// exports.deleteOnefavourate=(request,response)=>{
+//   Favourate.updateOne({_id:request.params.id},
+//       {
+//         $pullAll:{
+//           foodList:[{
+//              _id:request.params.packageId
+//           }]
+//         }
+//     }).then(result=>{
+//       console.log(result);
+//       if(result.modifiedCount)
+//          return response.status(202).json({message:"update  success..."});
+//       else
+//          return response.status(404).json({message:"not updated...."}); 
+//       })
+//    .catch(err=>{
+//      console.log(err);
+//      return response.status(500).json({message:"something went wrong"});
+//    });
+// }
