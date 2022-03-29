@@ -41,4 +41,6 @@ router.post("/order",orderController.order);
 
 router.get("/orderhistory/:id",orderController.orderhistory);
 
+router.post("/placeorder",orderController.placeOrder)
+
 module.exports=router;

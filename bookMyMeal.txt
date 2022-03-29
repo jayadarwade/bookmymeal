@@ -47,7 +47,17 @@ post-->http://localhost:5555/api/user/updateprofile/623ac31221b1e492c73b57b6(_id
 
 
 
-
+{
+   
+    "userId": "623ae648491b90530dc47031",
+    "orderItem": [
+        {
+            "_id": "623adf3d82fdfe89e9b5e99f",
+            "Qty":5  
+        }
+    ],
+    "address":"juni indore"
+}
 
 
 

@@ -112,3 +112,26 @@ exports.removefromblock = (requist, response) => {
       return response.status(500).json({ message: "something went wrong" });
     });
 };
+
+// exports.emailverification = (request, response) => {
+//   let sender = "jayadarwade524@gmail.com";
+//   let reciever = request.body.email;
+//   let subject = "verification";
+//   let message ='hello jaya'
+
+//   const transporter = nodemailer.createTransport({
+//     service: "gmail",
+//     auth: {
+//       user: sender,
+//       pass: "password",
+//     },
+//   });
+
+//   // email options
+//   let mailOptions = {
+//     from: sender,
+//     to: reciever,
+//     subject: 'verification',
+//     text:'hello',
+//   };
+// }
