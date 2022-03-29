@@ -24,11 +24,12 @@ exports.signin = (request, response) => {
     password: request.body.password,
   })
     .then((result) => {
-      if(result.isblock==false){
-        return response.status(404).json(result)
-      }
-      else 
-        return response.status(404).json({ message: "block user" });
+    //   if(result.isblock==false){
+    //     return response.status(404).json(result)
+    //   }
+    //   else 
+    //     return response.status(404).json({ message: "block user" });
+     return response.status(200).json(result)
     })
     .catch((err) => {
       console.log(err);
