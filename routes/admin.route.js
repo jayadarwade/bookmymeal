@@ -12,7 +12,7 @@ var Storage = multer.diskStorage({
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
-var upload = multer({ storage: Storage });
+var upload = multer({ storage: Storage });        
 
 const router = express.Router();
 

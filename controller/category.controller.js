@@ -8,7 +8,8 @@ exports.addCategory = (request, response, next) => {
   }
   Category.create({
     categoryname: request.body.categoryname,
-    categoryimage: "http://bookmymealjaya.herokuapp.com/images/" + request.file.filename,
+    categoryimage: "http://bookmymealjaya.herokuapp.com/images/" + request.file.filename[0],
+   
   })
     .then((result) => {
       return response.status(201).json(result);
