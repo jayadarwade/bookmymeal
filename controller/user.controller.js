@@ -1,6 +1,6 @@
 const User = require("../model/user.model");
 const { validationResult } = require("express-validator");
-
+const jwd = require('jsonwebtoken')
 exports.signup = (request, response) => {
   User.create({
     username: request.body.username,
@@ -24,12 +24,20 @@ exports.signin = (request, response) => {
     password: request.body.password,
   })
     .then((result) => {
+      if(result){
+        let paylod ={subject:result._id}
+      let token = jwd.sign(paylod,'abcdefghij')
     //   if(result.isblock==false){
     //     return response.status(404).json(result)
     //   }
     //   else 
     //     return response.status(404).json({ message: "block user" });
-     return response.status(200).json(result)
+     return response.status(200).json({
+       status:'login success',
+       current_user : result,
+       token: token
+     })
+      }
     })
     .catch((err) => {
       console.log(err);
