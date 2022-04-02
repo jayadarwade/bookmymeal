@@ -40,6 +40,7 @@ exports.deletecategory = (request, response, next) => {
       else return response.status(204).json({ message: "not deleted" });
     })
     .catch((err) => {
+      console.log(err)
       return response
         .status(500)
         .json({ message: "Oops! something went wrong" });

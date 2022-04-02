@@ -27,7 +27,7 @@ router.post(
   body("categoryname"),
   categoryController.addCategory
 );
-router.get("/viewcategory",tokenVerification.verifyToken, categoryController.viewcategory);
+router.get("/viewcategory", categoryController.viewcategory);
 router.delete("/deletecategory/:id", categoryController.deletecategory);
 router.post(
   "/updatecategory/:id",tokenVerification.verifyToken,
