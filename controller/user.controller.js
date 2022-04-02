@@ -24,6 +24,7 @@ exports.signin = (request, response) => {
     password: request.body.password,
   })
     .then((result) => {
+      console.log(result)
       if(result){
         let paylod ={subject:result._id}
       let token = jwd.sign(paylod,'abcdefghij')

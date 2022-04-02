@@ -13,7 +13,7 @@ var Storage = multer.diskStorage({
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
-var upload = multer({ storage: Storage });        
+var upload = multer({ storage: Storage });
 
 const router = express.Router();
 
@@ -27,10 +27,10 @@ router.post(
   body("categoryname"),
   categoryController.addCategory
 );
-router.get("/viewcategory", categoryController.viewcategory);
+router.get("/viewcategory",tokenVerification.verifyToken, categoryController.viewcategory);
 router.delete("/deletecategory/:id", categoryController.deletecategory);
 router.post(
-  "/updatecategory/:id",
+  "/updatecategory/:id",tokenVerification.verifyToken,
   upload.single("categoryimage"),
   body("categoryname").not().isEmpty(),
   body("categoryId").not().isEmpty(),
@@ -38,27 +38,27 @@ router.post(
 );
 
 router.post(
-  "/addfoodpackage",
+  "/addfoodpackage",tokenVerification.verifyToken,
   upload.single("foodimage"),
   foodPackages.addfoodpackage
 );
-router.get("/viewfoodpackage", foodPackages.viewallfoodlist);
-router.get("/viewfoodbycategory/:id", foodPackages.viewcategorylist);
-router.delete("/deletefoodpackage/:id", foodPackages.deletefoodpackage);
+router.get("/viewfoodpackage",tokenVerification.verifyToken, foodPackages.viewallfoodlist);
+router.get("/viewfoodbycategory/:id",tokenVerification.verifyToken, foodPackages.viewcategorylist);
+router.delete("/deletefoodpackage/:id",tokenVerification.verifyToken, foodPackages.deletefoodpackage);
 router.post(
-  "/updatefoodpackage/:id",
+  "/updatefoodpackage/:id",tokenVerification.verifyToken,
   upload.single("foodimage"),
   foodPackages.updatefoodpackage
 );
 
-router.get("/viewusers", userController.viewusers);
+router.get("/viewusers",tokenVerification.verifyToken, userController.viewusers);
 
-router.post("/updateprofile/:id", adminController.updateprofile);
+router.post("/updateprofile/:id",tokenVerification.verifyToken, adminController.updateprofile);
 
-router.get("/orderhistry", orderController.allorderhistory);
+router.get("/orderhistry",tokenVerification.verifyToken, orderController.allorderhistory);
 
-router.post("/addtoblock/:id", userController.addtoblock);
+router.post("/addtoblock/:id",tokenVerification.verifyToken, userController.addtoblock);
 
-router.post("/removefromblock/:id", userController.removefromblock);
+router.post("/removefromblock/:id",tokenVerification.verifyToken, userController.removefromblock);
 
 module.exports = router;

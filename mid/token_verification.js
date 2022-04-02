@@ -1,4 +1,3 @@
-const { response } = require("express");
 const jwt = require("jsonwebtoken");
 exports.verifyToken = (request, response, next) => {
   try {
