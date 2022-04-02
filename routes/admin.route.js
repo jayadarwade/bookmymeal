@@ -5,6 +5,7 @@ const userController = require("../controller/user.controller");
 const foodPackages = require("../controller/foodPackage.controller");
 const orderController = require("../controller/order.controller");
 const { body } = require("express-validator");
+const tokenVerification = require('../mid/token_verification')
 const multer = require("multer");
 var Storage = multer.diskStorage({
   destination: "public/images",
@@ -18,10 +19,10 @@ const router = express.Router();
 
 router.post("/signup", adminController.signup);
 
-router.get("/login", adminController.signin);
+router.post("/login", adminController.signin);
 
 router.post(
-  "/addcategory",
+  "/addcategory",tokenVerification.verifyToken,
   upload.single("categoryimage"),
   body("categoryname"),
   categoryController.addCategory

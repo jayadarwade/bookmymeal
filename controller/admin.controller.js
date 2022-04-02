@@ -1,6 +1,6 @@
 const Admin = require("../model/admin.model");
 const { validationResult } = require("express-validator");
-
+const jwt = require('jsonwebtoken')
 exports.signup = (request, response) => {
   const errors = validationResult(request);
   if (!errors.isEmpty()) {
@@ -32,8 +32,15 @@ exports.signin = (request, response) => {
     password: request.body.password,
   })
     .then((result) => {
-      if (result) return response.status(200).json(result);
-      else return response.status(404).json({ message: "Invalid user" });
+      if (result) {
+        let paylod = { subject: result._id };
+        let token = jwt.sign(paylod, "abcdefghij");
+        return response.status(200).json({
+          status: "login success",
+          current_user: result,
+          token: token,
+        });
+      }
     })
     .catch((err) => {
       console.log(err);
